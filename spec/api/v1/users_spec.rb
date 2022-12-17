@@ -3,8 +3,8 @@ require 'rails_helper'
 describe Api::V1::UsersController, type: :controller do
   context 'with valid params' do
     context 'POST create' do
-      let!(:token) { JWT.encode({ user_id: 1, exp: Api::V1::UsersController::EXPIRATION_TIME }, Api::V1::ApiController::SECRET) }
       let(:user) { User.last }
+      let(:token) { JWT.encode({ user_id: user.id, exp: Api::V1::UsersController::EXPIRATION_TIME }, Api::V1::ApiController::SECRET) }
       let(:expect_response) do
         {
           "user": {
@@ -18,7 +18,7 @@ describe Api::V1::UsersController, type: :controller do
         }.to_json
       end
 
-      it 'returns an new user with its token' do
+      it 'returns a new user with its token' do
         post :create, params: { username: 'new user', password: '123456' }
 
         expect(response).to have_http_status(:ok)

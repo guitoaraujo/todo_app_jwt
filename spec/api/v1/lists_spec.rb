@@ -12,10 +12,10 @@ describe Api::V1::ListsController, type: :controller do
       {
         "lists": [
           {
-            "id": 1,
+            "id": list1.id,
             "name": 'List 1',
             "status": 'visible',
-            "user_id": 1,
+            "user_id": user.id,
             "created_at": list1.created_at,
             "updated_at": list1.updated_at,
             "list_items": [list_item1]
@@ -44,7 +44,7 @@ describe Api::V1::ListsController, type: :controller do
     context 'PATCH update' do
       it 'has http status ok' do
         request.headers.merge!({ 'Authorization': "Bearer #{token}" })
-        patch :update, params: { id: 1, name: 'My List UPDATED' }
+        patch :update, params: { id: list1.id, name: 'My List UPDATED' }
 
         expect(response).to have_http_status(:ok)
       end
@@ -53,7 +53,7 @@ describe Api::V1::ListsController, type: :controller do
     context 'DELETE destroy' do
       it 'has http status ok' do
         request.headers.merge!({ 'Authorization': "Bearer #{token}" })
-        delete :destroy, params: { id: 1 }
+        delete :destroy, params: { id: list1.id }
 
         expect(response).to have_http_status(:ok)
       end

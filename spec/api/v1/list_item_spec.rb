@@ -54,7 +54,7 @@ describe Api::V1::ListItemsController, type: :controller do
     context 'PATCH update' do
       it 'has http status ok' do
         request.headers.merge!({ 'Authorization': "Bearer #{token}" })
-        patch :update, params: { list_id: list1.id, id: 1, name: 'My List item UPDATED' }
+        patch :update, params: { list_id: list1.id, id: list_item1.id, name: 'My List item UPDATED' }
 
         expect(response).to have_http_status(:ok)
       end
@@ -63,7 +63,7 @@ describe Api::V1::ListItemsController, type: :controller do
     context 'DELETE destroy' do
       it 'has http status ok' do
         request.headers.merge!({ 'Authorization': "Bearer #{token}" })
-        delete :destroy, params: { list_id: list1.id, id: 1 }
+        delete :destroy, params: { list_id: list1.id, id: list_item1.id }
 
         expect(response).to have_http_status(:ok)
       end
