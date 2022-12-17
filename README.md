@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby 3.1.0
+* Rails 7.0.4
 
-Things you may want to cover:
+## LOCAL
 
-* Ruby version
+* rails db:create db:migrate
 
-* System dependencies
+## RSPEC
 
-* Configuration
+* bundle exec rspec spec
 
-* Database creation
+## API
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* https://glacial-tor-44611.herokuapp.com/api/v1
+* /users
+* /lists
+* /lists/:list_id/list_items 
